@@ -80,7 +80,7 @@ Convert a given byte value to the specified SI or Binary unit.
 
 **Example:**
 ```python
-convert.from_bytes(bytes=536870912, rounded=True)  # Output: 0.5 GiB
+convert.from_bytes(bytes=536870912)  # Output: 0.5 GiB
 ```
 
 ---
