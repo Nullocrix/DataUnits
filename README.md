@@ -24,21 +24,33 @@ from data_units import DataUnits
 
 convert = DataUnits()
 
-# Convert 1 GiB to Bytes
-value = convert.to_bytes(gib=1)
-print(value)  # Output: 1073741824
+# Example 1: Convert 2 GiB to bytes, then back to GiB
+value_in_bytes = convert.to_bytes(gib=2)
+print(f"2 GiB in bytes: {value_in_bytes}")  # Output: 2147483648
 
-# Convert 1048576 Bytes to MiB with full precision
-value = convert.from_bytes(mib=1048576)
-print(value)  # Output: 1.0 MiB
+value_in_gib = convert.from_bytes(gib=value_in_bytes)
+print(f"2147483648 bytes in GiB: {value_in_gib}")  # Output: 2.0
 
-# Using default separator
-value = convert.to_bytes(mib=512, sep=False)
-print(value)  # Output: 536,870,912
+# Example 2: Convert 500 MB (SI) to bytes, then back to MB with rounding
+value_in_bytes = convert.to_bytes(mb=500)
+print(f"500 MB in bytes: {value_in_bytes}")  # Output: 500000000
 
-# Using custom separator example
-value = convert.from_bytes(mib=536870912, sep='>')
-print(value)  # Output: 1>024>512
+value_in_mb = convert.from_bytes(mb=value_in_bytes, rounded=True)
+print(f"500000000 bytes in MB: {value_in_mb}")  # Output: 500.0
+
+# Example 3: Convert 1.5 TiB to bytes, then back to TiB with a custom separator
+value_in_bytes = convert.to_bytes(tib=1.5, sep="_")
+print(f"1.5 TiB in bytes: {value_in_bytes}")  # Output: 1_649_267_441_664
+
+value_in_tib = convert.from_bytes(tib=value_in_bytes, sep='_')
+print(f"1,649,267,441,664 bytes in TiB: {value_in_tib}")  # Output: 1.5
+
+# Example 4: Using a custom separator when converting both ways
+value_in_bytes = convert.to_bytes(mib=1024, sep='_')
+print(f"1024 MiB in bytes with custom separator: {value_in_bytes}")  # Output: 1_073_741_824
+
+value_in_mib = convert.from_bytes(mib=1073741824, sep='.')
+print(f"1073741824 bytes in MiB with custom separator: {value_in_mib}")  # Output: 1024.0
 ```
 
 ---
@@ -84,11 +96,3 @@ The module provides detailed error messages for invalid inputs, such as:
 MIT License
 
 ---
-
-## **Contributing**
-Feel free to fork the project and submit pull requests for improvements or additional features.
-
----
-
-## **Contact**
-For questions or suggestions, contact [your_email@example.com].
