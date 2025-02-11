@@ -13,9 +13,7 @@ A Python module for converting between SI and Binary units to bytes and vice-ver
 
 ## **Installation**
 ```bash
-git clone https://github.com/Nullocrix/DataUnits
-cd DataUnits
-pip install .
+git clone https://github.com/Nullocrix/DataUnits.git && cd DataUnits; pip install .
 ```
 
 ---
