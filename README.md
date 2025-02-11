@@ -32,13 +32,13 @@ print(value)  # Output: 1073741824
 value = convert.from_bytes(mib=1048576)
 print(value)  # Output: 1.0 MiB
 
-# Using separators
-value = convert.to_bytes(mib=512, sep='_')
-print(value)  # Output: 536_870_912
+# Using default separator
+value = convert.to_bytes(mib=512, sep=False)
+print(value)  # Output: 536,870,912
 
-# Custom separator example
-value = convert.from_bytes(mib=536870912, sep='a')
-print(value)  # Output: 1a024a512
+# Using custom separator example
+value = convert.from_bytes(mib=536870912, sep='>')
+print(value)  # Output: 1>024>512
 ```
 
 ---
